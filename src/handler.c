@@ -563,10 +563,12 @@ void reset_char(CHAR_DATA *ch)
 	ch->pcdata->perm_move	= ch->max_move;
 	ch->pcdata->last_level	= ch->played/3600;
 	if (ch->pcdata->true_sex < 0 || ch->pcdata->true_sex > 2)
+        {
 		if (ch->sex > 0 && ch->sex < 3)
 	    	    ch->pcdata->true_sex	= ch->sex;
 		else
 		    ch->pcdata->true_sex 	= 0;
+        }
 
     }
 
@@ -759,10 +761,12 @@ int get_max_train( CHAR_DATA *ch, int stat )
 
     max = pc_race_table[ch->race].max_stats[stat];
     if (class_table[ch->class].attr_prime == stat)
+    {
 	if (ch->race == race_lookup("human"))
 	   max += 3;
 	else
 	   max += 2;
+    }
 
     return UMIN(max,25);
 }

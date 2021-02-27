@@ -569,10 +569,12 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, int dt )
 	dam = dam * 3 / 2;
 
     if ( dt == gsn_backstab && wield != NULL) 
+    {
     	if ( wield->value[0] != 2 )
 	    dam *= 2 + (ch->level / 10); 
 	else 
 	    dam *= 2 + (ch->level / 8);
+    }
 
     dam += GET_DAMROLL(ch) * UMIN(100,skill) /100;
 

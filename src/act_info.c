@@ -1120,21 +1120,25 @@ void do_look( CHAR_DATA *ch, char *argument )
 	{  /* player can see object */
 	    pdesc = get_extra_descr( arg3, obj->extra_descr );
 	    if ( pdesc != NULL )
+            {
 	    	if (++count == number)
 	    	{
 		    send_to_char( pdesc, ch );
 		    return;
 	    	}
 	    	else continue;
+            }
 
  	    pdesc = get_extra_descr( arg3, obj->pIndexData->extra_descr );
  	    if ( pdesc != NULL )
+            {
  	    	if (++count == number)
  	    	{	
 		    send_to_char( pdesc, ch );
 		    return;
 	     	}
 		else continue;
+            }
 
 	    if ( is_name( arg3, obj->name ) )
 	    	if (++count == number)

@@ -172,7 +172,10 @@ int	listen		args( ( int s, int backlog ) );
 */
 
 int	close		args( ( int fd ) );
+/* 
+GCC 10.2.1 say we dont need this. //mga
 int	gettimeofday	args( ( struct timeval *tp, struct timezone *tzp ) );
+*/
 int	read		args( ( int fd, char *buf, int nbyte ) );
 int	select		args( ( int width, fd_set *readfds, fd_set *writefds,
 			    fd_set *exceptfds, struct timeval *timeout ) );
@@ -865,8 +868,8 @@ void init_descriptor( int control )
     int size;
 
     size = sizeof(sock);
-    getsockname( control, (struct sockaddr *) &sock, &size );
-    if ( ( desc = accept( control, (struct sockaddr *) &sock, &size) ) < 0 )
+    getsockname( control, (struct sockaddr *) &sock, (socklen_t *) &size );
+    if ( ( desc = accept( control, (struct sockaddr *) &sock, (socklen_t *) &size) ) < 0 )
     {
 	perror( "New_descriptor: accept" );
 	return;
@@ -895,7 +898,7 @@ void init_descriptor( int control )
     dnew->outbuf	= alloc_mem( dnew->outsize );
 
     size = sizeof(sock);
-    if ( getpeername( desc, (struct sockaddr *) &sock, &size ) < 0 )
+    if ( getpeername( desc, (struct sockaddr *) &sock, (socklen_t *) &size ) < 0 )
     {
 	perror( "New_descriptor: getpeername" );
 	dnew->host = str_dup( "(unknown)" );

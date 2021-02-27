@@ -582,7 +582,7 @@ void do_cast( CHAR_DATA *ch, char *argument )
  */
 void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DATA *obj )
 {
-    void *vo;
+    void *vo = NULL;
     int target = TARGET_NONE;
 
     if ( sn <= 0 )
@@ -641,6 +641,7 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
 
     case TAR_OBJ_CHAR_OFF:
         if ( victim == NULL && obj == NULL)
+        {
 	    if (ch->fighting != NULL)
 		victim = ch->fighting;
 	    else
@@ -665,6 +666,7 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
 	    	vo = (void *) obj;
 	    	target = TARGET_OBJ;
 	    }
+         }
         break;
 
 
@@ -2201,10 +2203,12 @@ void spell_earthquake( int sn, int level, CHAR_DATA *ch, void *vo,int target )
 	if ( vch->in_room == ch->in_room )
 	{
 	    if ( vch != ch && !is_safe_spell(ch,vch,TRUE))
+            {
 		if (IS_AFFECTED(vch,AFF_FLYING))
 		    damage(ch,vch,0,sn,DAM_BASH,TRUE);
 		else
 		    damage( ch,vch,level + dice(2, 8), sn, DAM_BASH,TRUE);
+            }
 	    continue;
 	}
 
