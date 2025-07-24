@@ -1,0 +1,1 @@
+a Forgotten Kind, is a MUD based upon the source code of the original Rom24b6. It's name tells a story about the game it self, and the players and immortals roaming it.
