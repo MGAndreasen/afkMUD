@@ -28,6 +28,7 @@
 /* externs */
 extern char str_empty[1];
 extern int mobile_count;
+extern NOTE_DATA *note_free;
 
 /* stuff for providing a crash-proof buffer */
 
