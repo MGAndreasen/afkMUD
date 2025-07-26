@@ -2201,10 +2201,16 @@ void spell_earthquake( int sn, int level, CHAR_DATA *ch, void *vo,int target )
 	if ( vch->in_room == ch->in_room )
 	{
 	    if ( vch != ch && !is_safe_spell(ch,vch,TRUE))
+	    {
 		if (IS_AFFECTED(vch,AFF_FLYING))
+            {
 		    damage(ch,vch,0,sn,DAM_BASH,TRUE);
+            }
 		else
+            {
 		    damage( ch,vch,level + dice(2, 8), sn, DAM_BASH,TRUE);
+            }
+	    }
 	    continue;
 	}
 
