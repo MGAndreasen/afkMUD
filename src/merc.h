@@ -1917,6 +1917,7 @@ extern		SHOP_DATA	  *	shop_first;
 
 extern		CHAR_DATA	  *	char_list;
 extern		DESCRIPTOR_DATA   *	descriptor_list;
+extern		NOTE_DATA	  *	note_list;
 extern		OBJ_DATA	  *	object_list;
 
 extern		char			bug_buf		[];
