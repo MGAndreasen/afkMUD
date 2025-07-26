@@ -2491,10 +2491,16 @@ int get_cost( CHAR_DATA *keeper, OBJ_DATA *obj, bool fBuy )
 	    {
 	    	if ( obj->pIndexData == obj2->pIndexData
 		&&   !str_cmp(obj->short_descr,obj2->short_descr) )
+			{
 	 	    if (IS_OBJ_STAT(obj2,ITEM_INVENTORY))
+				{
 			cost /= 2;
+				}
 		    else
+				{
                     	cost = cost * 3 / 4;
+				}
+			}
 	    }
     }
 
