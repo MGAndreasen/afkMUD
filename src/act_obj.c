@@ -466,10 +466,16 @@ void do_put( CHAR_DATA *ch, char *argument )
 	    {
 	    	if (container->pIndexData->vnum == OBJ_VNUM_PIT
 	    	&&  !CAN_WEAR(obj, ITEM_TAKE) )
+	    	{
 	    	    if (obj->timer)
+				{
 			SET_BIT(obj->extra_flags,ITEM_HAD_TIMER);
+				}
 	    	    else
+				{
 	    	    	obj->timer = number_range(100,200);
+				}
+	    	}
 		obj_from_char( obj );
 		obj_to_obj( obj, container );
 
