@@ -766,10 +766,16 @@ int get_max_train( CHAR_DATA *ch, int stat )
 
     max = pc_race_table[ch->race].max_stats[stat];
     if (class_table[ch->class].attr_prime == stat)
+    {
 	if (ch->race == race_lookup("human"))
+        {
 	   max += 3;
+        }
 	else
+        {
 	   max += 2;
+        }
+    }
 
     return UMIN(max,25);
 }
