@@ -641,12 +641,16 @@ void obj_cast_spell( int sn, int level, CHAR_DATA *ch, CHAR_DATA *victim, OBJ_DA
 
     case TAR_OBJ_CHAR_OFF:
         if ( victim == NULL && obj == NULL)
+        {
 	    if (ch->fighting != NULL)
+            {
 		victim = ch->fighting;
+            }
 	    else
 	    {
 		send_to_char("You can't do that.\n\r",ch);
 		return;
+	        }
 	    }
 
 	    if (victim != NULL)
