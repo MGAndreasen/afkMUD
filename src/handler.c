@@ -562,11 +562,18 @@ void reset_char(CHAR_DATA *ch)
 	ch->pcdata->perm_mana 	= ch->max_mana;
 	ch->pcdata->perm_move	= ch->max_move;
 	ch->pcdata->last_level	= ch->played/3600;
+
 	if (ch->pcdata->true_sex < 0 || ch->pcdata->true_sex > 2)
+        {
 		if (ch->sex > 0 && ch->sex < 3)
+            {
 	    	    ch->pcdata->true_sex	= ch->sex;
+            }
 		else
+            {
 		    ch->pcdata->true_sex 	= 0;
+            }
+        }
 
     }
 
